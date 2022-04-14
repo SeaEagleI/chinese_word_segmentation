@@ -18,12 +18,12 @@
 
 - 在PKU和MSR上的评测结果（F值）
 
-|        |    PKU    |    MSR    |  Comment  |
-|:------:|:---------:|:---------:|:---------:|
-|  HMM   |   76.44   |   79.14   |           |
-| JieBa  |   81.93   |   81.41   | w/o Train |
-| N-Gram |   87.02   |   94.17   |           |
-| WMSEG  | **96.53** | **98.40** |           |
+|        |    PKU    |    MSR    |
+|:------:|:---------:|:---------:|
+|  HMM   |   76.44   |   79.14   |
+| JieBa* |   81.93   |   81.41   |
+| N-Gram |   87.02   |   94.17   |
+| WMSEG  | **96.53** | **98.40** |
 
 ## 参考
 - [watermelon-lee的HMM实现](https://github.com/watermelon-lee/machine-learning-algorithms-implemented-by-python/tree/master/HMM)
