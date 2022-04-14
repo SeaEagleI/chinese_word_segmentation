@@ -313,7 +313,7 @@ def train_and_test(dataset="pku"):
     p.SeparWords('prepostBigram')
     print('PrePostSegBigram Max')
     # eval
-    eval(pred_file, gold_file)
+    eval(model_type, dataset)
 
 
 if __name__ == '__main__':

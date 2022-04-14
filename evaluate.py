@@ -38,7 +38,7 @@ def eval(model_type, dataset):
 
 if __name__ == "__main__":
     datasets = ["pku", "msr"]
-    model_types = ["hmm", "ngram"]
+    model_types = ["hmm", "ngram", "jieba"]
     for model in model_types:
         for dataset in datasets:
             eval(model, dataset)

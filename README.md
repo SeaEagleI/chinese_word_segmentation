@@ -8,7 +8,7 @@
 ### 统计机器学习方法
 - HMM
 - N-Gram
-- JieBa (待实现)
+- JieBa (只做默认条件下的jieba库分词能力测试，不进行训练)
 
 ### 神经网络方法
 - Bert (待实现)
@@ -18,11 +18,12 @@
 
 - 在PKU和MSR上的评测结果（F值）
 
-|        |    PKU    |    MSR    |
-| :----: | :-------: | :-------: |
-|  HMM   |   76.44   |   79.14   |
-| N-Gram |   87.02   |   94.17   |
-| WMSEG  | **96.53** | **98.40** |
+|        |    PKU    |    MSR    |  Comment  |
+|:------:|:---------:|:---------:|:---------:|
+|  HMM   |   76.44   |   79.14   |           |
+| JieBa  |   81.93   |   81.41   | w/o Train |
+| N-Gram |   87.02   |   94.17   |           |
+| WMSEG  | **96.53** | **98.40** |           |
 
 ## 参考
 - [watermelon-lee的HMM实现](https://github.com/watermelon-lee/machine-learning-algorithms-implemented-by-python/tree/master/HMM)
