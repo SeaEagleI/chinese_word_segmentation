@@ -24,11 +24,8 @@
 | N-Gram |   87.02   |   94.17   |
 | WMSEG  | **96.53** | **98.40** |
 
-
-
 ## 参考
 - [watermelon-lee的HMM实现](https://github.com/watermelon-lee/machine-learning-algorithms-implemented-by-python/tree/master/HMM)
 - [基于N-gram的双向最大匹配中文分词](https://mqsee.blog.csdn.net/article/details/53466043)
-- [结巴中文分词 做最好的 Python 中文分词组件](https://github.com/fxsjy/jieba)
-- [中文分词新sota WMSEG (ACL2020)](https://aclanthology.org/2020.acl-main.734/)
-
+- [结巴中文分词: 做最好的Python中文分词组件](https://github.com/fxsjy/jieba)
+- [中文分词新SOTA: WMSEG (ACL2020)](https://aclanthology.org/2020.acl-main.734/)
