@@ -1,13 +1,13 @@
 # coding:utf-8
 import numpy as np
 from config import train_dir, test_dir, pred_dir
-
+import os
 # model params
 model_type = "hmm"
 
 
 # learn HMM params from train set (supervised paradigm)
-def train(fileName):
+def train(fileName, delta = 1):
     # HMM模型由三要素决定 lambda=（A，B，pi）
     # A为状态转移矩阵
     # B为观测概率矩阵
@@ -108,6 +108,8 @@ def train(fileName):
     # 但是，如果有一些没有出现的词语，导致矩阵对应位置0，那么测试的时候遇到了，连乘中有一个为0，整体就为0。
     # 但是log0是不存在的，所以我们需要给每一个0的位置加上一个极小值（-3.14e+100)，使得其有定义。
 
+    # 更正：调用smooth，先把PI,A,B做平滑处理，再做其他
+    PI, A, B = smooth(PI, A, B, delta)
     # 计算PI向量
     total = sum(PI)
     for i in range(len(PI)):
@@ -140,6 +142,25 @@ def train(fileName):
                 B[i][j] = np.log(B[i][j] / total)
 
     # 返回三个参数
+    return PI, A, B
+def smooth(PI, A, B, delta = 1):
+    """
+    输入PI,A,B频数矩阵，根据加delta平滑算法，在无值的点加delta，返回平滑后的PI,A,B频数矩阵
+    """
+    ###  A和PI 不需要平滑
+    # for i in range(len(PI)):
+    #     if PI[i] == 0:
+    #         PI[i] = delta
+    #
+    # for i in range(len(A)):
+    #     for j in range(len(A[0])):
+    #         if A[i][j] == 0:
+    #             A[i][j] = delta
+
+    for i in range(len(B)):
+        for j in range(len(B[0])):
+            if B[i][j] == 0:
+                B[i][j] = delta
     return PI, A, B
 
 
@@ -249,14 +270,15 @@ def loadArticle(fileName):
 
 
 # train & test loop
-def train_and_test(dataset="pku"):
+def train_and_test(dataset="pku", delta = 1):
     # data_files
-    train_file = f"{train_dir}/{dataset}_training.utf8"
-    test_file = f"{test_dir}/{dataset}_test.utf8"
-    pred_file = f"{pred_dir}/{dataset}_test_pred_{model_type}.utf8"
+    root = "../" # 有需要可以换成函数
+    train_file = os.path.join(root, f"{train_dir}/{dataset}_training.utf8")
+    test_file = os.path.join(root, f"{test_dir}/{dataset}_test.utf8")
+    pred_file = os.path.join(root, f"{pred_dir}/{dataset}_test_pred_{model_type}_delta_{delta}.utf8")
 
     # training
-    param = train(train_file)
+    param = train(train_file, delta)
     # testing
     article = loadArticle(test_file)
     print(f"dataset: {dataset} | test_size: {len(article)}")
@@ -281,6 +303,7 @@ def train_and_test(dataset="pku"):
 
 
 if __name__ == '__main__':
-
-    train_and_test("pku")
-    train_and_test("msr")
+    delta_list = [0.1, 0.3, 0.6, 0.9, 1, 1.3, 1.6, 1.9]
+    for delta in delta_list:
+        train_and_test("pku", delta)
+        train_and_test("msr", delta)
