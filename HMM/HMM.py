@@ -149,19 +149,16 @@ def smooth(PI, A, B, delta = 1):
     """
     ###  A和PI 不需要平滑
     # for i in range(len(PI)):
-    #     if PI[i] == 0:
-    #         PI[i] = delta
+    #      PI[i] += delta
     #
     # for i in range(len(A)):
     #     for j in range(len(A[0])):
-    #         if A[i][j] == 0:
-    #             A[i][j] = delta
-
+    #         A[i][j] += delta
     for i in range(len(B)):
         for j in range(len(B[0])):
-            if B[i][j] == 0:
-                B[i][j] = delta
+                B[i][j] += delta
     return PI, A, B
+
 
 
 # run word segmentation based on learned HMM params
