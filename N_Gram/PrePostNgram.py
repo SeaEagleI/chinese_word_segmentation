@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 import math
+import os
 from config import train_dir, test_dir, pred_dir
 from evaluate import eval
 
@@ -89,6 +90,7 @@ class PrePostNgram:
 
             # 根据英文、数字、标点将长句切分为多个子句
             flag = 0
+         
             for ch in line:
                 if ch in Number or ch in English:
                     flag = 1
@@ -301,10 +303,11 @@ class PrePostNgram:
 # train & test loop
 def train_and_test(dataset="pku"):
     # data files
-    train_file = f"{train_dir}/{dataset}_training.utf8"
-    test_file = f"{test_dir}/{dataset}_test.utf8"
-    pred_file = f"{pred_dir}/{dataset}_test_pred_{model_type}.utf8"
-    gold_file = f"{test_dir}/{dataset}_test_gold.utf8"
+    root = "../"
+    train_file = os.path.join(root, f"{train_dir}/{dataset}_training.utf8")
+    test_file = os.path.join(root, f"{test_dir}/{dataset}_test.utf8")
+    pred_file = os.path.join(root, f"{pred_dir}/{dataset}_test_pred_{model_type}.utf8")
+    gold_file = os.path.join(root, f"{test_dir}/{dataset}_test_gold.utf8")
 
     # train
     p = PrePostNgram(train_file, test_file, pred_file)
