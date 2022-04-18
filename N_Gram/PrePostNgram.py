@@ -303,11 +303,11 @@ class PrePostNgram:
 # train & test loop
 def train_and_test(dataset="pku"):
     # data files
-    root = "../"
-    train_file = os.path.join(root, f"{train_dir}/{dataset}_training.utf8")
-    test_file = os.path.join(root, f"{test_dir}/{dataset}_test.utf8")
-    pred_file = os.path.join(root, f"{pred_dir}/{dataset}_test_pred_{model_type}.utf8")
-    gold_file = os.path.join(root, f"{test_dir}/{dataset}_test_gold.utf8")
+
+    train_file = f"{train_dir}/{dataset}_training.utf8"
+    test_file = f"{test_dir}/{dataset}_test.utf8"
+    pred_file = f"{pred_dir}/{dataset}_test_pred_{model_type}.utf8"
+    gold_file = f"{test_dir}/{dataset}_test_gold.utf8"
 
     # train
     p = PrePostNgram(train_file, test_file, pred_file)

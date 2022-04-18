@@ -269,10 +269,9 @@ def loadArticle(fileName):
 # train & test loop
 def train_and_test(dataset="pku", delta = 1):
     # data_files
-    root = "../" # 有需要可以换成函数
-    train_file = os.path.join(root, f"{train_dir}/{dataset}_training.utf8")
-    test_file = os.path.join(root, f"{test_dir}/{dataset}_test.utf8")
-    pred_file = os.path.join(root, f"{pred_dir}/{dataset}_test_pred_{model_type}_delta_{delta}.utf8")
+    train_file = f"{train_dir}/{dataset}_training.utf8"
+    test_file =  f"{test_dir}/{dataset}_test.utf8"
+    pred_file = f"{pred_dir}/{dataset}_test_pred_{model_type}_delta_{delta}.utf8"
 
     # training
     param = train(train_file, delta)
