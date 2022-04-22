@@ -14,7 +14,7 @@
 
 ### 神经网络方法
 - CNN (待实现)
-- Bi-LSTM (待实现)
+- BiLSTM (待实现)
 - Transformer (待实现)
 
 ### 预训练语言模型方法
@@ -25,19 +25,14 @@
 
 - 在PKU和MSR上的评测结果（F值）
 
-|        |    PKU    |    MSR    |
-|:------:|:---------:|:---------:|
-|  HMM   |   76.44   |   79.14   |
-| JieBa* |   81.93   |   81.41   |
-| N-Gram |   87.02   |   94.17   |
-| WMSEG  | **96.53** | **98.40** |
+（待更新）
 
 ## 说明
 
-1. WMSEG是一种CWS任务训练框架，支持使用Bi-LSTM、BERT、ZEN作为encoder（ZEN和BERT一样也是一种预训练encoder，不过在中文语料上效果更好）。
+1. WMSEG是一种CWS任务训练框架，支持使用BiLSTM、BERT、ZEN作为encoder（ZEN和BERT一样也是一种预训练encoder，不过在中文语料上效果更好）。
 
 ## 参考
 - [watermelon-lee的HMM实现](https://github.com/watermelon-lee/machine-learning-algorithms-implemented-by-python/tree/master/HMM)
 - [基于N-gram的双向最大匹配中文分词](https://mqsee.blog.csdn.net/article/details/53466043)
-- [结巴中文分词: 做最好的Python中文分词组件](https://github.com/fxsjy/jieba)
+- [Bert/RoBerta/BiLSTM在CWS任务上的实现](https://github.com/hemingkx/WordSeg)
 - [中文分词新SOTA: WMSEG (ACL2020)](https://aclanthology.org/2020.acl-main.734/)
