@@ -8,12 +8,12 @@ import time
 model_type = "ngram"
 span = 12
 Punctuation = u'、""“”’‘。（）():[]【】;：《》；！，、'
-Number = u'0123456789%.'
+Number = u'0123456789%.％．@○'
 English = u'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 
 # 前向后向最大匹配算法实现
-class PrePostNgram:
+class N_Gram:
     def __init__(self, train_file, test_file, pred_file):
         # stats params
         ## 1-gram params
@@ -40,7 +40,7 @@ class PrePostNgram:
             2: self.BiSegProb,
             3: self.TriSegProb,
         }
-        self.use_rules = True
+        self.inner_rules = True
 
     # 读取训练集文件，得到每个词的1元词频 _WordDict 和 每个词后接词的2元词频 _NextWord
     def Training(self):
@@ -125,17 +125,18 @@ class PrePostNgram:
         if x in self._WordDict:
             return self._WordDict[x]
         # 符合日期和量词特征的返回1.34
-        if self.use_rules and self.is_date_or_quantifier(x):
-            return max(self._WordDict.values()) / self._UniVocabSize
+        # if self.inner_rules and self.is_date_or_number(x) or self.is_special_string(x):
+        if self.inner_rules and self.is_date_or_quantifier(x):
+                return max(self._WordDict.values()) / self._UniVocabSize
         # 不是单字的没有概率返回0, 单字的不在词典的话返回1
         return int(len(x) == 1)
 
-    # 判断是否为全字母、中英文数字、和典型标点组成的串
+    # 判断是否为全字母、中英文数字、和典型数字符号组成的串
     def is_all_seperator(self, s):
         if not s:
             return False
         for ch in s:
-            if not (ch in English or ch in Number or ch in '％．@.○'):
+            if not (ch in English or ch in Number):
                 return False
         return True
 
@@ -155,12 +156,13 @@ class PrePostNgram:
 
     # 在测试集上做分词
     # 双向匹配在pku和msr两个数据集上效果均比前两种单向匹配方法F值高一个点左右
-    def Segmentation(self, n=1, delta=1, use_rules=True, all_cut=False, log=False):
+    def Segmentation(self, n=1, delta=1, outer_rules=True, method="cross", inner_rules=True, log=False):
         # set file & func
         test_file = open(self.test_file, encoding="utf-8")
         test_result_file = open(self.pred_file, 'w', encoding="utf-8")
         CalSegProb = self.SegProbs[n]
-        self.use_rules = use_rules
+        self.inner_rules = inner_rules
+        assert method in ["prepost", "cross", "all-cut"]
         # if all_cut:
         #     assert n == 1
         # init vars
@@ -172,10 +174,10 @@ class PrePostNgram:
             # 编码方式改为utf-8
             line = line.strip()
             char_count += len(line)
-            SenList1, SenList2 = [], []
+            SenList, SenList1, SenList2 = [], [], []
 
             # 根据英文、数字、标点将长句切分为多个子句
-            # 先切<标点>
+            # 切<标点>
             for ch in line:
                 if ch in Punctuation:
                     if tmp_words != u'':
@@ -189,112 +191,121 @@ class PrePostNgram:
                 SenList1.append(tmp_words)
                 sent_count += 1
             tmp_words = u''
-            # 再切<英文>、<数字>、以及<数字+量词>
-            for sent in SenList1:
-                if sent[0] in Punctuation:
-                    SenList2.append(sent)
-                    continue
-                flag = 0
-                for ch in sent:
-                    if self.is_all_seperator(ch):
-                        if flag == 0 and tmp_words != u'':
-                            SenList2.append(tmp_words)
-                            tmp_words = u''
-                        flag = 1
-                        tmp_words += ch
-                    else:
-                        if flag == 1:
-                            if ch in "年月日时分亿":
-                                SenList2.append(tmp_words + ch)
-                                SpecialDict[tmp_words + ch] = 1
-                                flag = 0
-                                tmp_words = u''
-                            elif ch in "万":
-                                tmp_words += ch
-                            else:
+            # Outer_Rules: 在外部切<英文>、<数字>、以及<数字+量词>
+            if outer_rules:
+                for sent in SenList1:
+                    if sent[0] in Punctuation:
+                        SenList2.append(sent)
+                        continue
+                    flag = 0
+                    for ch in sent:
+                        if self.is_all_seperator(ch):
+                            if flag == 0 and tmp_words != u'':
                                 SenList2.append(tmp_words)
-                                SpecialDict[tmp_words] = 1
-                                flag = 0
-                                tmp_words = ch
-                        else:
+                                tmp_words = u''
+                            flag = 1
                             tmp_words += ch
-                if tmp_words != u'':
-                    SenList2.append(tmp_words)
-                    if flag == 1:
-                        SpecialDict[tmp_words] = 1
-                tmp_words = u''
-
-            for ch in SenList2:
-                if ch[0] not in Punctuation and ch not in SpecialDict:
-                    # 默认使用双向最大匹配
-                    # 根据前向最大匹配和后向最大匹配得到得到句子的两个词序列（添加BEG和END作为句子的开始和结束）
-                    begins, ends = [u'<BEG>'] * (n - 1), [u'<END>'] * (n - 1)
-                    ParseList1 = begins + self.PreMax(ch) + ends
-                    ParseList2 = begins + self.PostMax(ch) + ends
-                    # ParseList记录最终分词结果, CalList1和CalList2分别记录两个句子词序列不同的部分
-                    # pos1和pos2记录两个句子的当前字的位置，cur1和cur2记录两个句子的第几个词
-                    ParseList = []
-                    CalList1, CalList2 = [], []
-                    pos1, pos2, cur1, cur2 = 0, 0, 0, 0
-                    while True:
-                        if cur1 == len(ParseList1) and cur2 == len(ParseList2):
-                            break
-                        # posx一样，并且下一个词也一样
-                        if pos1 == pos2 and len(ParseList1[cur1]) == len(ParseList2[cur2]):
-                            pos1 += len(ParseList1[cur1])
-                            pos2 += len(ParseList2[cur2])
-                            # 说明此时得到两个不同的词序列，根据n-gram选择概率大的
-                            if len(CalList1) > 0:
-                                # 算不同的时候视n的大小考虑加上前面n-1个词和后面n-1个词，拼接的时候再去掉即可
-                                if n == 2:
-                                    # assert cur1 <= len(ParseList1) - 1
-                                    CalList1 = ParseList[-1:] + CalList1 + ParseList1[cur1: cur1 + 1]
-                                    CalList2 = ParseList[-1:] + CalList2 + ParseList2[cur2: cur2 + 1]
-                                elif n == 3:
-                                    # assert cur1 <= len(ParseList1) - 2 and cur2 <= len(ParseList2) - 2
-                                    CalList1 = ParseList[-2:] + CalList1 + ParseList1[cur1: cur1 + 2]
-                                    CalList2 = ParseList[-2:] + CalList2 + ParseList2[cur2: cur2 + 2]
-                                # 全切分（1-gram, 只对双向匹配过程中不一致的部分做消歧, 从而降低全局计算量）
-                                if n == 1 and all_cut:
-                                    CalList = self.all_cut(''.join(CalList1))
-                                    t = 1
-                                # 非全切分
-                                else:
-                                    # 计算序列概率，选择较大者
-                                    p1 = CalSegProb(CalList1, delta)
-                                    p2 = CalSegProb(CalList2, delta)
-                                    CalList = CalList1 if p1 > p2 else CalList2
-                                # 将前面n-1个词和后面n-1个词去掉
-                                CalList = CalList[n - 1: 1 - n] if n >= 2 else CalList
-                                for word in CalList:
-                                    ParseList.append(word)
-                                CalList1, CalList2 = [], []
-                            ParseList.append(ParseList1[cur1])
-                            cur1 += 1
-                            cur2 += 1
-                        # posx不同，而结束位相同，两个同时向后滑动
-                        elif pos1 != pos2 and pos1 + len(ParseList1[cur1]) == pos2 + len(ParseList2[cur2]):
-                            CalList1.append(ParseList1[cur1])
-                            CalList2.append(ParseList2[cur2])
-                            pos1 += len(ParseList1[cur1])
-                            pos2 += len(ParseList2[cur2])
-                            cur1 += 1
-                            cur2 += 1
-                        # posx相同，posx+len(ParseListx[curx])不同，将结束位靠前的向后滑动，并将词添加到待计算序列CalListx中
-                        elif pos1 + len(ParseList1[cur1]) > pos2 + len(ParseList2[cur2]):
-                            CalList2.append(ParseList2[cur2])
-                            pos2 += len(ParseList2[cur2])
-                            cur2 += 1
                         else:
-                            CalList1.append(ParseList1[cur1])
-                            pos1 += len(ParseList1[cur1])
-                            cur1 += 1
-                    # 将开头和末尾的<BEG>和<END>去掉
-                    ParseList = ParseList[n - 1: 1 - n] if n >= 2 else ParseList
+                            if flag == 1:
+                                if ch in "年月日时分亿":
+                                    SenList2.append(tmp_words + ch)
+                                    SpecialDict[tmp_words + ch] = 1
+                                    flag = 0
+                                    tmp_words = u''
+                                elif ch in "万":
+                                    tmp_words += ch
+                                else:
+                                    SenList2.append(tmp_words)
+                                    SpecialDict[tmp_words] = 1
+                                    flag = 0
+                                    tmp_words = ch
+                            else:
+                                tmp_words += ch
+                    if tmp_words != u'':
+                        SenList2.append(tmp_words)
+                        if flag == 1:
+                            SpecialDict[tmp_words] = 1
+                    tmp_words = u''
+                SenList = SenList2
+            else:
+                SenList = SenList1
+
+            # 逐句切分
+            for sent in SenList:
+                if sent[0] not in Punctuation and sent not in SpecialDict:
+                    ParseList = []
+                    # n-gram均可使用双向最大匹配 和 OuterRules (n=1,2,3)
+                    # 1-gram可以使用全切分, 并在全切分内部选择是否使用 InnerRules (n=1)
+                    if method == "all-cut":
+                        ParseList = self.all_cut(sent)
+                    else:
+                        # 根据前向最大匹配和后向最大匹配得到得到句子的两个词序列（添加BEG和END作为句子的开始和结束）
+                        begins, ends = [u'<BEG>'] * (n - 1), [u'<END>'] * (n - 1)
+                        ParseList1 = begins + self.PreMax(sent) + ends
+                        ParseList2 = begins + self.PostMax(sent) + ends
+                        # ParseList记录最终分词结果, CalList1和CalList2分别记录两个句子词序列不同的部分
+                        # pos1和pos2记录两个句子的当前字的位置，cur1和cur2记录两个句子的第几个词
+                        CalList1, CalList2 = [], []
+                        pos1, pos2, cur1, cur2 = 0, 0, 0, 0
+                        while True:
+                            if cur1 == len(ParseList1) and cur2 == len(ParseList2):
+                                break
+                            # posx一样，并且下一个词也一样
+                            if pos1 == pos2 and len(ParseList1[cur1]) == len(ParseList2[cur2]):
+                                pos1 += len(ParseList1[cur1])
+                                pos2 += len(ParseList2[cur2])
+                                # 说明此时得到两个不同的词序列，根据n-gram选择概率大的
+                                if len(CalList1) > 0:
+                                    # 算不同的时候视n的大小考虑加上前面n-1个词和后面n-1个词，拼接的时候再去掉即可
+                                    if n == 2:
+                                        # assert cur1 <= len(ParseList1) - 1
+                                        CalList1 = ParseList[-1:] + CalList1 + ParseList1[cur1: cur1 + 1]
+                                        CalList2 = ParseList[-1:] + CalList2 + ParseList2[cur2: cur2 + 1]
+                                    elif n == 3:
+                                        # assert cur1 <= len(ParseList1) - 2 and cur2 <= len(ParseList2) - 2
+                                        CalList1 = ParseList[-2:] + CalList1 + ParseList1[cur1: cur1 + 2]
+                                        CalList2 = ParseList[-2:] + CalList2 + ParseList2[cur2: cur2 + 2]
+                                    # 全切分（1-gram, 只对双向匹配过程中不一致的部分做消歧, 从而降低全局计算量）
+                                    if n == 1 and method == "cross":
+                                        CalList = self.all_cut(''.join(CalList1))
+                                        t = 1
+                                    # 非全切分
+                                    elif method == "prepost":
+                                        # 计算序列概率，选择较大者
+                                        p1 = CalSegProb(CalList1, delta)
+                                        p2 = CalSegProb(CalList2, delta)
+                                        CalList = CalList1 if p1 > p2 else CalList2
+                                    # 将前面n-1个词和后面n-1个词去掉
+                                    CalList = CalList[n - 1: 1 - n] if n >= 2 else CalList
+                                    for word in CalList:
+                                        ParseList.append(word)
+                                    CalList1, CalList2 = [], []
+                                ParseList.append(ParseList1[cur1])
+                                cur1 += 1
+                                cur2 += 1
+                            # posx不同，而结束位相同，两个同时向后滑动
+                            elif pos1 != pos2 and pos1 + len(ParseList1[cur1]) == pos2 + len(ParseList2[cur2]):
+                                CalList1.append(ParseList1[cur1])
+                                CalList2.append(ParseList2[cur2])
+                                pos1 += len(ParseList1[cur1])
+                                pos2 += len(ParseList2[cur2])
+                                cur1 += 1
+                                cur2 += 1
+                            # posx相同，posx+len(ParseListx[curx])不同，将结束位靠前的向后滑动，并将词添加到待计算序列CalListx中
+                            elif pos1 + len(ParseList1[cur1]) > pos2 + len(ParseList2[cur2]):
+                                CalList2.append(ParseList2[cur2])
+                                pos2 += len(ParseList2[cur2])
+                                cur2 += 1
+                            else:
+                                CalList1.append(ParseList1[cur1])
+                                pos1 += len(ParseList1[cur1])
+                                cur1 += 1
+                        # 将开头和末尾的<BEG>和<END>去掉
+                        ParseList = ParseList[n - 1: 1 - n] if n >= 2 else ParseList
                     for pos, words in enumerate(ParseList):
                         tmp_words += words + u'  '
                 else:
-                    tmp_words += ch + u'  '
+                    tmp_words += sent + u'  '
             test_result_file.write(tmp_words + '\n')
             tmp_words = u''
 
@@ -407,19 +418,19 @@ class PrePostNgram:
 
 
 # train & test loop
-def train_and_test(dataset="pku", n=1, delta=1, use_rules=True, all_cut=False, log=True):
+def train_and_test(dataset="pku", n=1, delta=1, outer_rules=True, method="cross", inner_rules=True, log=True):
     # data files
     train_file = f"{train_dir}/{dataset}_training.utf8"
     test_file = f"{test_dir}/{dataset}_test.utf8"
     pred_file = f"{pred_dir}/{dataset}_test_pred_{model_type}.utf8"
 
     # train
-    p = PrePostNgram(train_file, test_file, pred_file)
+    p = N_Gram(train_file, test_file, pred_file)
     p.Training()
     # test
     if log:
-        print(f"n={n}\tδ={delta}\t", end="")
-    p.Segmentation(n, delta, use_rules, all_cut, log)
+        print(f"n={n}\tδ={delta}\touterR={outer_rules}\tmethod={method}\tinnerR={inner_rules}\t", end="")
+    p.Segmentation(n, delta, outer_rules, method, inner_rules, log)
     # eval
     eval(model_type, dataset, log)
 
