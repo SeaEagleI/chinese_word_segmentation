@@ -156,13 +156,13 @@ class N_Gram:
 
     # 在测试集上做分词
     # 双向匹配在pku和msr两个数据集上效果均比前两种单向匹配方法F值高一个点左右
-    def Segmentation(self, n=1, delta=1, outer_rules=True, method="cross", inner_rules=True, log=False):
+    def Segmentation(self, n=1, delta=1, outer_rules=True, method="hybrid", inner_rules=True, log=False):
         # set file & func
         test_file = open(self.test_file, encoding="utf-8")
         test_result_file = open(self.pred_file, 'w', encoding="utf-8")
         CalSegProb = self.SegProbs[n]
         self.inner_rules = inner_rules
-        assert method in ["prepost", "cross", "all-cut"]
+        assert method in ["prepost", "hybrid", "all-cut"]
         # if all_cut:
         #     assert n == 1
         # init vars
@@ -266,7 +266,7 @@ class N_Gram:
                                         CalList1 = ParseList[-2:] + CalList1 + ParseList1[cur1: cur1 + 2]
                                         CalList2 = ParseList[-2:] + CalList2 + ParseList2[cur2: cur2 + 2]
                                     # 全切分（1-gram, 只对双向匹配过程中不一致的部分做消歧, 从而降低全局计算量）
-                                    if n == 1 and method == "cross":
+                                    if n == 1 and method == "hybrid":
                                         CalList = self.all_cut(''.join(CalList1))
                                         t = 1
                                     # 非全切分
@@ -418,7 +418,7 @@ class N_Gram:
 
 
 # train & test loop
-def train_and_test(dataset="pku", n=1, delta=1, outer_rules=True, method="cross", inner_rules=True, log=True):
+def train_and_test(dataset="pku", n=1, delta=1, outer_rules=True, method="hybrid", inner_rules=True, log=True):
     # data files
     train_file = f"{train_dir}/{dataset}_training.utf8"
     test_file = f"{test_dir}/{dataset}_test.utf8"
