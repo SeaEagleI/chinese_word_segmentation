@@ -1,13 +1,14 @@
 # coding:utf-8
 import numpy as np
 from config import train_dir, test_dir, pred_dir
-import os
+from evaluate import eval
+
 # model params
 model_type = "hmm"
 
 
 # learn HMM params from train set (supervised paradigm)
-def train(fileName, delta = 1):
+def train(fileName, delta=1):
     # HMM模型由三要素决定 lambda=（A，B，pi）
     # A为状态转移矩阵
     # B为观测概率矩阵
@@ -61,9 +62,7 @@ def train(fileName, delta = 1):
         for line in file.readlines():
             wordStatus = []  # 用于保存该行所有单词的状态
             words = line.strip().split()  # 除去前后空格，然后依照中间空格切分为单词
-
             for i, word in enumerate(words):
-
                 # 根据长度判断状态
                 if len(word) == 1:
                     status = 'S'  # 保存每一个单词状态
@@ -73,7 +72,6 @@ def train(fileName, delta = 1):
                     # 先统计频数
                     code = ord(word)
                     B[status2num[status[0]]][code] += 1
-
                 else:
                     # 当长度为2，M*0。这样可以一起更新
                     status = 'B' + (len(word) - 2) * 'M' + 'E'
@@ -84,16 +82,13 @@ def train(fileName, delta = 1):
                     for s in range(len(word)):
                         code = ord(word[s])
                         B[status2num[status[s]]][code] += 1
-
                 # i==0意味着这是句首。我们需要更新PI中每种状态出现次数
                 if i == 0:
                     # status[0]表示这行第一个状态
                     # status2num将其映射到list对应位置
                     PI[status2num[status[0]]] += 1
-
                 # 使用extend，将status中每一个元素家在列表之中。而不是append直接将整个status放在后面
                 wordStatus.extend(status)
-
             # 遍历完了一行，然后更新矩阵A
             # A代表的是前一个状态到后一个状态的概率
             # 我们先统计频数
@@ -107,7 +102,6 @@ def train(fileName, delta = 1):
     # 1.如果句子较长，许多个较小的数值连乘，容易造成下溢。对于这种情况，我们常常使用log函数解决。
     # 但是，如果有一些没有出现的词语，导致矩阵对应位置0，那么测试的时候遇到了，连乘中有一个为0，整体就为0。
     # 但是log0是不存在的，所以我们需要给每一个0的位置加上一个极小值（-3.14e+100)，使得其有定义。
-
     # 更正：调用smooth，先把PI,A,B做平滑处理，再做其他
     PI, A, B = smooth(PI, A, B, delta)
     # 计算PI向量
@@ -143,11 +137,13 @@ def train(fileName, delta = 1):
 
     # 返回三个参数
     return PI, A, B
-def smooth(PI, A, B, delta = 1):
+
+
+def smooth(PI, A, B, delta=1):
     """
     输入PI,A,B频数矩阵，根据加delta平滑算法，在无值的点加delta，返回平滑后的PI,A,B频数矩阵
     """
-    ###  A和PI 不需要平滑
+    ###  A和PI不需要平滑
     # for i in range(len(PI)):
     #      PI[i] += delta
     #
@@ -156,9 +152,8 @@ def smooth(PI, A, B, delta = 1):
     #         A[i][j] += delta
     for i in range(len(B)):
         for j in range(len(B[0])):
-                B[i][j] += delta
+            B[i][j] += delta
     return PI, A, B
-
 
 
 # run word segmentation based on learned HMM params
@@ -267,21 +262,23 @@ def loadArticle(fileName):
 
 
 # train & test loop
-def train_and_test(dataset="pku", delta = 1):
+def train_and_test(dataset="pku", delta=1):
     # data_files
     train_file = f"{train_dir}/{dataset}_training.utf8"
-    test_file =  f"{test_dir}/{dataset}_test.utf8"
-    pred_file = f"{pred_dir}/{dataset}_test_pred_{model_type}_delta_{delta}.utf8"
+    test_file = f"{test_dir}/{dataset}_test.utf8"
+    pred_file = f"{pred_dir}/{dataset}_test_pred_{model_type}.utf8"
 
     # training
     param = train(train_file, delta)
     # testing
     article = loadArticle(test_file)
-    print(f"dataset: {dataset} | test_size: {len(article)}")
+    # print(f"dataset: {dataset} | test_size: {len(article)}")
     article_partition = word_partition(param, article)
     # print(article_partition)
-    open(pred_file, "w+", encoding="utf-8")\
+    open(pred_file, "w+", encoding="utf-8") \
         .write("\n".join(article_partition) + "\n")
+    # eval
+    return eval(model_type, dataset)
 
     # **********自定义测试***************
     # 请输出测试语句行数2
@@ -299,7 +296,7 @@ def train_and_test(dataset="pku", delta = 1):
 
 
 if __name__ == '__main__':
-    delta_list = [0.1, 0.3, 0.6, 0.9, 1, 1.3, 1.6, 1.9]
-    for delta in delta_list:
-        train_and_test("pku", delta)
-        train_and_test("msr", delta)
+
+    delta = 1
+    train_and_test("pku", delta)
+    train_and_test("msr", delta)
