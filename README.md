@@ -42,7 +42,7 @@
 
 下表为HMM模型使用+δ平滑的参数实验结果。本次参数实验主要对HMM在PKU和MSR两个数据集上共2种场景下+δ平滑中的δ值进行了精调，分别得到了每个场景下的最优δ值。
 
-![](https://github.com/SeaEagleI/chinese_word_segmentation/blob/master/results/1.png)
+![](results/1.png)
 
 结论：
 - HMM模型的推理速度适中，但效果较差。
@@ -56,7 +56,7 @@
 
 下表为在N-Gram（n=1,2,3）条件下使用双向最大匹配算法（即**匹配方式**=prepost）和+δ平滑，且不加入任何人工规则的参数实验结果。本次参数实验主要对n=1,2,3三种N-Gram在PKU和MSR两个数据集上共6种场景下+δ平滑中的δ值进行了精调。
 
-![](https://github.com/SeaEagleI/chinese_word_segmentation/blob/master/results/2.png)
+![](results/2.png)
 
 结论：
 - 无规则情况下使用双向最大匹配的BiGram效果最好，在两个数据集上的F值均最高。
@@ -73,7 +73,7 @@
 
 注：混合匹配和全切分匹配的实现均未使用+δ平滑，故这里不涉及δ值的设置和测试。
 
-![](https://github.com/SeaEagleI/chinese_word_segmentation/blob/master/results/3.png)
+![](results/3.png)
 
 结论：
 - 混合方法在两个数据集上的最好表现均超过全切分，且速度上没有比双向最大匹配慢太多，整体上来看是三种算法中最优的。
@@ -85,7 +85,7 @@
 
 最后，我们对比了每个模型在所有设置下的最优结果，同时引入了jieba、hannlp等外部库的实验结果作为参考。其中外部库不在PKU和MSR的训练集上做训练，直接在测试集上进行预测。
 
-![](https://github.com/SeaEagleI/chinese_word_segmentation/blob/master/results/4.png)
+![](results/4.png)
 
 结论：
 - PKU上加入规则的UniGram表现最好，MSR上不加规则的BiGram表现最好。
