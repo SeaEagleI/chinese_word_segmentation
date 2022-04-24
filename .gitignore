@@ -1,0 +1,22 @@
+# cache
+__pycache__/
+*.pyc
+
+# IDE config
+.idea/
+
+# local scripts
+*.cmd
+*.sh
+test.py
+
+# results
+data/
+*.utf8
+*.txt
+
+# docs
+docs/
+
+# others
+obsolete/
