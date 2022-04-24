@@ -11,12 +11,12 @@ __pycache__/
 test.py
 
 # results
-data/
+/data/
 *.utf8
 *.txt
 
 # docs
-docs/
+/docs/
 
 # others
-obsolete/
+/obsolete/

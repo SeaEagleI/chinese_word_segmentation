@@ -8,7 +8,7 @@ import N_Gram.Ngram as ngram
 # params
 eps = 1e-5
 model_list = ["hmm", "ngram"]
-gram_list = [1]
+gram_list = [1, 2, 3]
 delta_list = np.arange(0, 1.1, 0.1)
 dataset_list = ["pku", "msr"]
 
@@ -50,13 +50,15 @@ def grid_search(model, dataset):
 
 # parameter experiment
 # 无规则情况下的hmm实验
-# grid_search("hmm", "pku")
-# grid_search("hmm", "msr")
+grid_search("hmm", "pku")
+grid_search("hmm", "msr")
 
 # 无规则情况下的n-gram实验
+## 对δ精调
 # grid_search("ngram", "pku")
 # grid_search("ngram", "msr")
 
+## 无规则情况下测试使用最佳δ时的模型效果
 ngram.train_and_test("pku", n=1, delta=1e-5, outer_rules=False, method="prepost", inner_rules=False)
 ngram.train_and_test("msr", n=1, delta=0.4, outer_rules=False, method="prepost", inner_rules=False)
 ngram.train_and_test("pku", n=2, delta=0.1, outer_rules=False, method="prepost", inner_rules=False)
