@@ -101,5 +101,7 @@
 - [watermelon-lee的HMM实现](https://github.com/watermelon-lee/machine-learning-algorithms-implemented-by-python/tree/master/HMM)
 - [基于N-gram的双向最大匹配中文分词](https://mqsee.blog.csdn.net/article/details/53466043)
 - [另一位同学的课程项目实现（同步更新）](https://github.com/JackHCC/Chinese-Tokenization)
-- [Bert/RoBerta/BiLSTM在CWS任务上的实现](https://github.com/hemingkx/WordSeg)
+- [Bert/RoBerta/BiLSTM在CWS任务上的实现 - 代码](https://github.com/hemingkx/WordSeg)
+- [Bert/RoBerta/BiLSTM在CWS任务上的实现 - 知乎](https://zhuanlan.zhihu.com/p/371842740)
+- [中文预训练字向量](https://github.com/Embedding/Chinese-Word-Vectors)
 - [中文分词新SOTA: WMSEG (ACL2020)](https://aclanthology.org/2020.acl-main.734/)
