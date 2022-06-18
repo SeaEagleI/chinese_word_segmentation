@@ -1,0 +1,505 @@
+nohup: ignoring input
+main.py --dataset ./data/msro_dataset --crf --devi 1 --dict msro.pkl
+
+Namespace(dataset='./data/msro_dataset', dict='msro.pkl', word_embeddings=None, bigram_embeddings=None, crf=True, devi='1', step=0, num_epochs=80, flex=-1, batch_size=256, d_model=256, d_ff=1024, N=6, h=4, factor=2, dropout=0.2, log_dir='result', task_name='2022-06-07-15-31-22', no_model=False, always_model=False, old_model=None, skip_dev=False, freeze=False, only_task=False, subset=None, seclude=None, instances=None, python_seed=719241884086974039, debug=False, test=False)
+Python random seed: 719241884086974039
+/data/wangdejun/NLP-CWS/MCCWS-master/models.py:171: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  nn.init.xavier_uniform(p)
+Number training instances: 291866
+Number dev instances: 32429
+Epoch 1 out of 80
+time: 80.68997859954834 loss: 10.889113457342912 step: 1141
+/home/wangdejun/workspace/anaconda3/envs/MCCWS/lib/python3.10/site-packages/fastNLP/core/field.py:245: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+  return np.array(contents)  # 不进行任何操作
+<msr>	86.07	84.51	85.28	0.00
+TOT	86.07	84.51	85.28
+AVG	86.07	84.51	85.28	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 2 out of 80
+time: 75.07748866081238 loss: 3.454995723119647 step: 2282
+<msr>	90.04	90.69	90.36	0.00
+TOT	90.04	90.69	90.36
+AVG	90.04	90.69	90.36	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 3 out of 80
+time: 73.70109057426453 loss: 1.8326606528472733 step: 3423
+<msr>	91.73	91.77	91.75	0.00
+TOT	91.73	91.77	91.75
+AVG	91.73	91.77	91.75	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 4 out of 80
+time: 72.40284466743469 loss: 1.4233655703697259 step: 4564
+<msr>	92.30	92.25	92.28	0.00
+TOT	92.30	92.25	92.28
+AVG	92.30	92.25	92.28	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 5 out of 80
+time: 75.58832335472107 loss: 1.2271531085556375 step: 5705
+<msr>	92.68	92.54	92.61	0.00
+TOT	92.68	92.54	92.61
+AVG	92.68	92.54	92.61	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 6 out of 80
+time: 73.19039368629456 loss: 1.1186968244670985 step: 6846
+<msr>	93.12	93.54	93.33	0.00
+TOT	93.12	93.54	93.33
+AVG	93.12	93.54	93.33	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 7 out of 80
+time: 73.40698266029358 loss: 1.0383855963679232 step: 7987
+<msr>	93.74	94.09	93.91	0.00
+TOT	93.74	94.09	93.91
+AVG	93.74	94.09	93.91	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 8 out of 80
+time: 77.41273808479309 loss: 0.9680945234149564 step: 9128
+<msr>	93.88	94.28	94.08	0.00
+TOT	93.88	94.28	94.08
+AVG	93.88	94.28	94.08	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 9 out of 80
+time: 78.09930777549744 loss: 0.9106984672795305 step: 10269
+<msr>	94.14	94.53	94.33	0.00
+TOT	94.14	94.53	94.33
+AVG	94.14	94.53	94.33	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 10 out of 80
+time: 76.21957349777222 loss: 0.8734834815892183 step: 11410
+<msr>	94.29	94.74	94.51	0.00
+TOT	94.29	94.74	94.51
+AVG	94.29	94.74	94.51	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 11 out of 80
+time: 75.29196500778198 loss: 0.8319856578502135 step: 12551
+<msr>	94.36	94.96	94.66	0.00
+TOT	94.36	94.96	94.66
+AVG	94.36	94.96	94.66	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 12 out of 80
+time: 68.95027804374695 loss: 0.7965776772612966 step: 13692
+<msr>	94.33	95.12	94.72	0.00
+TOT	94.33	95.12	94.72
+AVG	94.33	95.12	94.72	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 13 out of 80
+time: 74.5992386341095 loss: 0.7563913724075849 step: 14833
+<msr>	94.87	95.23	95.05	0.00
+TOT	94.87	95.23	95.05
+AVG	94.87	95.23	95.05	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 14 out of 80
+time: 76.12120866775513 loss: 0.7246724459474072 step: 15974
+<msr>	94.98	95.39	95.18	0.00
+TOT	94.98	95.39	95.18
+AVG	94.98	95.39	95.18	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 15 out of 80
+time: 75.39192795753479 loss: 0.7025639700860856 step: 17115
+<msr>	95.00	95.55	95.28	0.00
+TOT	95.00	95.55	95.28
+AVG	95.00	95.55	95.28	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 16 out of 80
+time: 79.16913199424744 loss: 0.6729638320373454 step: 18256
+<msr>	95.22	95.67	95.44	0.00
+TOT	95.22	95.67	95.44
+AVG	95.22	95.67	95.44	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 17 out of 80
+time: 82.25235629081726 loss: 0.6508038216788815 step: 19397
+<msr>	95.23	95.61	95.42	0.00
+TOT	95.23	95.61	95.42
+AVG	95.23	95.61	95.42	0.00
+Epoch 18 out of 80
+time: 82.05474925041199 loss: 0.6318868202541764 step: 20538
+<msr>	95.42	95.78	95.60	0.00
+TOT	95.42	95.78	95.60
+AVG	95.42	95.78	95.60	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 19 out of 80
+time: 77.98493671417236 loss: 0.6132893981632436 step: 21679
+<msr>	95.32	95.92	95.62	0.00
+TOT	95.32	95.92	95.62
+AVG	95.32	95.92	95.62	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 20 out of 80
+time: 74.73263311386108 loss: 0.6010992498929619 step: 22820
+<msr>	95.53	95.84	95.69	0.00
+TOT	95.53	95.84	95.69
+AVG	95.53	95.84	95.69	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 21 out of 80
+time: 76.01410794258118 loss: 0.5848681248894237 step: 23961
+<msr>	95.60	96.00	95.80	0.00
+TOT	95.60	96.00	95.80
+AVG	95.60	96.00	95.80	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 22 out of 80
+time: 70.4272232055664 loss: 0.574592928556394 step: 25102
+<msr>	95.51	96.06	95.78	0.00
+TOT	95.51	96.06	95.78
+AVG	95.51	96.06	95.78	0.00
+Epoch 23 out of 80
+time: 75.22105312347412 loss: 0.5641722831806523 step: 26243
+<msr>	95.79	96.04	95.92	0.00
+TOT	95.79	96.04	95.92
+AVG	95.79	96.04	95.92	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 24 out of 80
+time: 73.78383183479309 loss: 0.5485259509081385 step: 27384
+<msr>	95.62	96.06	95.84	0.00
+TOT	95.62	96.06	95.84
+AVG	95.62	96.06	95.84	0.00
+Epoch 25 out of 80
+time: 72.48359656333923 loss: 0.5308975456551853 step: 28525
+<msr>	95.85	96.20	96.03	0.00
+TOT	95.85	96.20	96.03
+AVG	95.85	96.20	96.03	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 26 out of 80
+time: 76.46233534812927 loss: 0.5206731469643863 step: 29666
+<msr>	95.76	96.24	96.00	0.00
+TOT	95.76	96.24	96.00
+AVG	95.76	96.24	96.00	0.00
+Epoch 27 out of 80
+time: 74.93600106239319 loss: 0.5064842796000496 step: 30807
+<msr>	95.90	96.24	96.07	0.00
+TOT	95.90	96.24	96.07
+AVG	95.90	96.24	96.07	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 28 out of 80
+time: 80.40697765350342 loss: 0.4995028322609917 step: 31948
+<msr>	96.12	96.23	96.17	0.00
+TOT	96.12	96.23	96.17
+AVG	96.12	96.23	96.17	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 29 out of 80
+time: 79.73014068603516 loss: 0.4872543273051249 step: 33089
+<msr>	95.92	96.43	96.17	0.00
+TOT	95.92	96.43	96.17
+AVG	95.92	96.43	96.17	0.00
+Epoch 30 out of 80
+time: 83.09180736541748 loss: 0.4799012675861796 step: 34230
+<msr>	95.97	96.42	96.19	0.00
+TOT	95.97	96.42	96.19
+AVG	95.97	96.42	96.19	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 31 out of 80
+time: 74.47890567779541 loss: 0.46920567478635244 step: 35371
+<msr>	96.06	96.47	96.27	0.00
+TOT	96.06	96.47	96.27
+AVG	96.06	96.47	96.27	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 32 out of 80
+time: 73.34971785545349 loss: 0.4629847453931619 step: 36512
+<msr>	95.97	96.46	96.21	0.00
+TOT	95.97	96.46	96.21
+AVG	95.97	96.46	96.21	0.00
+Epoch 33 out of 80
+time: 82.19913291931152 loss: 0.4537343718764502 step: 37653
+<msr>	96.05	96.51	96.28	0.00
+TOT	96.05	96.51	96.28
+AVG	96.05	96.51	96.28	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 34 out of 80
+time: 76.82337164878845 loss: 0.4442780364752077 step: 38794
+<msr>	95.97	96.49	96.23	0.00
+TOT	95.97	96.49	96.23
+AVG	95.97	96.49	96.23	0.00
+Epoch 35 out of 80
+time: 79.35969734191895 loss: 0.43543762059051355 step: 39935
+<msr>	96.18	96.55	96.36	0.00
+TOT	96.18	96.55	96.36
+AVG	96.18	96.55	96.36	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 36 out of 80
+time: 70.66403126716614 loss: 0.43086237478331973 step: 41076
+<msr>	96.13	96.49	96.31	0.00
+TOT	96.13	96.49	96.31
+AVG	96.13	96.49	96.31	0.00
+Epoch 37 out of 80
+time: 77.39610457420349 loss: 0.42252371981935893 step: 42217
+<msr>	96.25	96.65	96.45	0.00
+TOT	96.25	96.65	96.45
+AVG	96.25	96.65	96.45	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 38 out of 80
+time: 74.10322999954224 loss: 0.4197463207142746 step: 43358
+<msr>	96.25	96.61	96.43	0.00
+TOT	96.25	96.61	96.43
+AVG	96.25	96.61	96.43	0.00
+Epoch 39 out of 80
+time: 72.28125762939453 loss: 0.41162629089217 step: 44499
+<msr>	96.12	96.72	96.42	0.00
+TOT	96.12	96.72	96.42
+AVG	96.12	96.72	96.42	0.00
+Epoch 40 out of 80
+time: 70.13883709907532 loss: 0.40569388384846716 step: 45640
+<msr>	96.21	96.62	96.41	0.00
+TOT	96.21	96.62	96.41
+AVG	96.21	96.62	96.41	0.00
+Epoch 41 out of 80
+time: 77.65647006034851 loss: 0.40208390927779686 step: 46781
+<msr>	95.90	96.72	96.31	0.00
+TOT	95.90	96.72	96.31
+AVG	95.90	96.72	96.31	0.00
+Epoch 42 out of 80
+time: 75.47659111022949 loss: 0.39644217167921386 step: 47922
+<msr>	96.11	96.74	96.42	0.00
+TOT	96.11	96.74	96.42
+AVG	96.11	96.74	96.42	0.00
+Epoch 43 out of 80
+time: 80.34745979309082 loss: 0.39175485942992694 step: 49063
+<msr>	96.08	96.77	96.42	0.00
+TOT	96.08	96.77	96.42
+AVG	96.08	96.77	96.42	0.00
+Epoch 44 out of 80
+time: 77.67718625068665 loss: 0.3863767309799565 step: 50204
+<msr>	96.12	96.77	96.45	0.00
+TOT	96.12	96.77	96.45
+AVG	96.12	96.77	96.45	0.00
+Epoch 45 out of 80
+time: 72.19582986831665 loss: 0.38192489982225936 step: 51345
+<msr>	96.25	96.75	96.50	0.00
+TOT	96.25	96.75	96.50
+AVG	96.25	96.75	96.50	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 46 out of 80
+time: 75.49873542785645 loss: 0.37817829410487575 step: 52486
+<msr>	96.37	96.77	96.57	0.00
+TOT	96.37	96.77	96.57
+AVG	96.37	96.77	96.57	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 47 out of 80
+time: 75.1216254234314 loss: 0.37267869908777274 step: 53627
+<msr>	96.48	96.72	96.60	0.00
+TOT	96.48	96.72	96.60
+AVG	96.48	96.72	96.60	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 48 out of 80
+time: 76.39106440544128 loss: 0.3691562364574956 step: 54768
+<msr>	96.31	96.87	96.59	0.00
+TOT	96.31	96.87	96.59
+AVG	96.31	96.87	96.59	0.00
+Epoch 49 out of 80
+time: 80.43655753135681 loss: 0.3641169681250527 step: 55909
+<msr>	96.37	96.81	96.59	0.00
+TOT	96.37	96.81	96.59
+AVG	96.37	96.81	96.59	0.00
+Epoch 50 out of 80
+time: 71.35412907600403 loss: 0.35961146867204713 step: 57050
+<msr>	96.34	96.85	96.60	0.00
+TOT	96.34	96.85	96.60
+AVG	96.34	96.85	96.60	0.00
+Epoch 51 out of 80
+time: 69.8714280128479 loss: 0.35516818719250814 step: 58191
+<msr>	96.30	96.85	96.57	0.00
+TOT	96.30	96.85	96.57
+AVG	96.30	96.85	96.57	0.00
+Epoch 52 out of 80
+time: 75.21049332618713 loss: 0.3510120530971093 step: 59332
+<msr>	96.45	96.79	96.62	0.00
+TOT	96.45	96.79	96.62
+AVG	96.45	96.79	96.62	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 53 out of 80
+time: 71.39438104629517 loss: 0.3493334732551412 step: 60473
+<msr>	96.31	96.86	96.58	0.00
+TOT	96.31	96.86	96.58
+AVG	96.31	96.86	96.58	0.00
+Epoch 54 out of 80
+time: 75.42244219779968 loss: 0.34639755557442214 step: 61614
+<msr>	96.43	96.93	96.68	0.00
+TOT	96.43	96.93	96.68
+AVG	96.43	96.93	96.68	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 55 out of 80
+time: 69.8970398902893 loss: 0.33990054913877293 step: 62755
+<msr>	96.35	96.89	96.62	0.00
+TOT	96.35	96.89	96.62
+AVG	96.35	96.89	96.62	0.00
+Epoch 56 out of 80
+time: 78.74253797531128 loss: 0.33606443583873885 step: 63896
+<msr>	96.48	96.85	96.67	0.00
+TOT	96.48	96.85	96.67
+AVG	96.48	96.85	96.67	0.00
+Epoch 57 out of 80
+time: 69.08858466148376 loss: 0.3335227172864204 step: 65037
+<msr>	96.67	96.84	96.75	0.00
+TOT	96.67	96.84	96.75
+AVG	96.67	96.84	96.75	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 58 out of 80
+time: 75.67310523986816 loss: 0.33377390268350987 step: 66178
+<msr>	96.40	96.94	96.67	0.00
+TOT	96.40	96.94	96.67
+AVG	96.40	96.94	96.67	0.00
+Epoch 59 out of 80
+time: 68.6755645275116 loss: 0.32839015230706237 step: 67319
+<msr>	96.31	96.94	96.62	0.00
+TOT	96.31	96.94	96.62
+AVG	96.31	96.94	96.62	0.00
+Epoch 60 out of 80
+time: 70.38428735733032 loss: 0.3255941813597807 step: 68460
+<msr>	96.47	96.89	96.68	0.00
+TOT	96.47	96.89	96.68
+AVG	96.47	96.89	96.68	0.00
+Epoch 61 out of 80
+time: 77.62810158729553 loss: 0.32331800793185766 step: 69601
+<msr>	96.51	96.89	96.70	0.00
+TOT	96.51	96.89	96.70
+AVG	96.51	96.89	96.70	0.00
+Epoch 62 out of 80
+time: 71.92788505554199 loss: 0.3201549816207338 step: 70742
+<msr>	96.66	96.93	96.79	0.00
+TOT	96.66	96.93	96.79
+AVG	96.66	96.93	96.79	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 63 out of 80
+time: 78.85898971557617 loss: 0.3150149513065397 step: 71883
+<msr>	96.54	96.93	96.73	0.00
+TOT	96.54	96.93	96.73
+AVG	96.54	96.93	96.73	0.00
+Epoch 64 out of 80
+time: 78.09326720237732 loss: 0.31397063242668233 step: 73024
+<msr>	96.53	96.94	96.74	0.00
+TOT	96.53	96.94	96.74
+AVG	96.53	96.94	96.74	0.00
+Epoch 65 out of 80
+time: 81.5615622997284 loss: 0.31201462119843854 step: 74165
+<msr>	96.44	96.99	96.71	0.00
+TOT	96.44	96.99	96.71
+AVG	96.44	96.99	96.71	0.00
+Epoch 66 out of 80
+time: 77.209468126297 loss: 0.3066789840150536 step: 75306
+<msr>	96.37	97.00	96.69	0.00
+TOT	96.37	97.00	96.69
+AVG	96.37	97.00	96.69	0.00
+Epoch 67 out of 80
+time: 75.4299008846283 loss: 0.30792445471342145 step: 76447
+<msr>	96.63	96.87	96.75	0.00
+TOT	96.63	96.87	96.75
+AVG	96.63	96.87	96.75	0.00
+Epoch 68 out of 80
+time: 73.21299457550049 loss: 0.3049559484772208 step: 77588
+<msr>	96.56	96.95	96.76	0.00
+TOT	96.56	96.95	96.76
+AVG	96.56	96.95	96.76	0.00
+Epoch 69 out of 80
+time: 74.73757553100586 loss: 0.2996206468070786 step: 78729
+<msr>	96.56	96.99	96.78	0.00
+TOT	96.56	96.99	96.78
+AVG	96.56	96.99	96.78	0.00
+Epoch 70 out of 80
+time: 70.97507429122925 loss: 0.2964165318238171 step: 79870
+<msr>	96.50	97.01	96.75	0.00
+TOT	96.50	97.01	96.75
+AVG	96.50	97.01	96.75	0.00
+Epoch 71 out of 80
+time: 68.63868689537048 loss: 0.29408253624539016 step: 81011
+<msr>	96.52	97.03	96.77	0.00
+TOT	96.52	97.03	96.77
+AVG	96.52	97.03	96.77	0.00
+Epoch 72 out of 80
+time: 70.05140376091003 loss: 0.29417487970772904 step: 82152
+<msr>	96.63	97.00	96.82	0.00
+TOT	96.63	97.00	96.82
+AVG	96.63	97.00	96.82	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 73 out of 80
+time: 73.74253916740417 loss: 0.2912071070794627 step: 83293
+<msr>	96.64	96.99	96.82	0.00
+TOT	96.64	96.99	96.82
+AVG	96.64	96.99	96.82	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 74 out of 80
+time: 77.13293075561523 loss: 0.28882592028916193 step: 84434
+<msr>	96.52	97.08	96.80	0.00
+TOT	96.52	97.08	96.80
+AVG	96.52	97.08	96.80	0.00
+Epoch 75 out of 80
+time: 73.96726703643799 loss: 0.2856626905456812 step: 85575
+<msr>	96.59	97.06	96.83	0.00
+TOT	96.59	97.06	96.83
+AVG	96.59	97.06	96.83	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 76 out of 80
+time: 72.16617631912231 loss: 0.28329998768676695 step: 86716
+<msr>	96.58	97.04	96.81	0.00
+TOT	96.58	97.04	96.81
+AVG	96.58	97.04	96.81	0.00
+Epoch 77 out of 80
+time: 76.13047218322754 loss: 0.28300585869069583 step: 87857
+<msr>	96.68	97.07	96.87	0.00
+TOT	96.68	97.07	96.87
+AVG	96.68	97.07	96.87	0.00
+- new best score!
+Saving model to result/2022-06-07-15-31-22/model.bin
+Epoch 78 out of 80
+time: 75.3733160495758 loss: 0.28040109075259784 step: 88998
+<msr>	96.59	97.11	96.85	0.00
+TOT	96.59	97.11	96.85
+AVG	96.59	97.11	96.85	0.00
+Epoch 79 out of 80
+time: 70.19007420539856 loss: 0.274803214959717 step: 90139
+<msr>	96.53	97.07	96.80	0.00
+TOT	96.53	97.07	96.80
+AVG	96.53	97.07	96.80	0.00
+Epoch 80 out of 80
+time: 74.90208840370178 loss: 0.2760392772286843 step: 91280
+<msr>	96.52	97.11	96.82	0.00
+TOT	96.52	97.11	96.82
+AVG	96.52	97.11	96.82	0.00
+
+
+Number test instances: 15433
+<msr>	96.28	96.58	96.43	66.85
+TOT	96.28	96.58	96.43
+AVG	96.28	96.58	96.43	66.85
+<pad> {'s': 0, 'b': 1, 'e': 2, 'm': 3}
+{'<msr>': 0}
+291866 32429 15433
+use crf: {0: 's', 1: 'b', 2: 'e', 3: 'm'}
+Trans Freeze False 256
+crf
+multi: [1]
+(1, 256)

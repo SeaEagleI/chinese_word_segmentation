@@ -5,15 +5,25 @@ __pycache__/
 # IDE config
 .idea/
 
+# git
+.gitignore
+
 # local scripts
 *.cmd
 *.sh
 test.py
 
-# results
-/data/
+# models
+pretrained_bert_models/
+checkpoints/
+
+# data & results
+data/
 *.utf8
 *.txt
+
+# expired logs
+experiments/
 
 # docs
 /docs/

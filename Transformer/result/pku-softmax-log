@@ -1,0 +1,517 @@
+nohup: ignoring input
+main.py --dataset ./data/pkuo_dataset --devi 2 --dict pkuo.pkl
+
+Namespace(dataset='./data/pkuo_dataset', dict='pkuo.pkl', word_embeddings=None, bigram_embeddings=None, crf=False, devi='2', step=0, num_epochs=80, flex=-1, batch_size=256, d_model=256, d_ff=1024, N=6, h=4, factor=2, dropout=0.2, log_dir='result', task_name='2022-06-07-14-59-55', no_model=False, always_model=False, old_model=None, skip_dev=False, freeze=False, only_task=False, subset=None, seclude=None, instances=None, python_seed=6195459029951016025, debug=False, test=False)
+Python random seed: 6195459029951016025
+/home/wangdejun/workspace/anaconda3/envs/MCCWS/lib/python3.10/site-packages/torch/nn/_reduction.py:42: UserWarning: size_average and reduce args will be deprecated, please use reduction='sum' instead.
+  warnings.warn(warning.format(ret))
+/data/wangdejun/NLP-CWS/MCCWS-master/models.py:171: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  nn.init.xavier_uniform(p)
+Number training instances: 136584
+Number dev instances: 15175
+Epoch 1 out of 80
+time: 32.160927057266235 loss: 11.913169248050519 step: 534
+/home/wangdejun/workspace/anaconda3/envs/MCCWS/lib/python3.10/site-packages/fastNLP/core/field.py:245: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+  return np.array(contents)  # 不进行任何操作
+<pku>	65.90	66.38	66.14	0.00
+TOT	65.90	66.38	66.14
+AVG	65.90	66.38	66.14	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 2 out of 80
+time: 29.74937677383423 loss: 6.521659573142448 step: 1068
+<pku>	86.89	86.91	86.90	0.00
+TOT	86.89	86.91	86.90
+AVG	86.89	86.91	86.90	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 3 out of 80
+time: 30.90803837776184 loss: 3.9885678320899887 step: 1602
+<pku>	89.55	90.92	90.23	0.00
+TOT	89.55	90.92	90.23
+AVG	89.55	90.92	90.23	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 4 out of 80
+time: 29.43755316734314 loss: 3.1043322247623952 step: 2136
+<pku>	92.80	91.30	92.04	0.00
+TOT	92.80	91.30	92.04
+AVG	92.80	91.30	92.04	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 5 out of 80
+time: 29.47034978866577 loss: 2.615384352034174 step: 2670
+<pku>	93.50	92.62	93.06	0.00
+TOT	93.50	92.62	93.06
+AVG	93.50	92.62	93.06	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 6 out of 80
+time: 30.830426931381226 loss: 2.3963910961865484 step: 3204
+<pku>	93.62	93.60	93.61	0.00
+TOT	93.62	93.60	93.61
+AVG	93.62	93.60	93.61	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 7 out of 80
+time: 29.989649295806885 loss: 2.2717760851264894 step: 3738
+<pku>	93.51	94.02	93.77	0.00
+TOT	93.51	94.02	93.77
+AVG	93.51	94.02	93.77	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 8 out of 80
+time: 29.92348337173462 loss: 2.278867035015915 step: 4272
+<pku>	93.79	94.37	94.08	0.00
+TOT	93.79	94.37	94.08
+AVG	93.79	94.37	94.08	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 9 out of 80
+time: 29.810859203338623 loss: 2.098270192993491 step: 4806
+<pku>	94.50	94.04	94.27	0.00
+TOT	94.50	94.04	94.27
+AVG	94.50	94.04	94.27	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 10 out of 80
+time: 29.198052167892456 loss: 1.9514517148168347 step: 5340
+<pku>	94.75	94.41	94.58	0.00
+TOT	94.75	94.41	94.58
+AVG	94.75	94.41	94.58	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 11 out of 80
+time: 30.1583833694458 loss: 1.8254221657549174 step: 5874
+<pku>	94.45	95.03	94.74	0.00
+TOT	94.45	95.03	94.74
+AVG	94.45	95.03	94.74	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 12 out of 80
+time: 29.86908483505249 loss: 1.7149698663684312 step: 6408
+<pku>	94.78	95.30	95.04	0.00
+TOT	94.78	95.30	95.04
+AVG	94.78	95.30	95.04	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 13 out of 80
+time: 30.384164094924927 loss: 1.6161533702123032 step: 6942
+<pku>	94.74	95.27	95.00	0.00
+TOT	94.74	95.27	95.00
+AVG	94.74	95.27	95.00	0.00
+Epoch 14 out of 80
+time: 31.281986474990845 loss: 1.5517688080919592 step: 7476
+<pku>	94.90	95.42	95.16	0.00
+TOT	94.90	95.42	95.16
+AVG	94.90	95.42	95.16	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 15 out of 80
+time: 28.749826431274414 loss: 1.4792381721698724 step: 8010
+<pku>	95.05	95.49	95.27	0.00
+TOT	95.05	95.49	95.27
+AVG	95.05	95.49	95.27	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 16 out of 80
+time: 30.77239441871643 loss: 1.4033586677680079 step: 8544
+<pku>	94.79	95.74	95.26	0.00
+TOT	94.79	95.74	95.26
+AVG	94.79	95.74	95.26	0.00
+Epoch 17 out of 80
+time: 31.339441299438477 loss: 1.3244800907088798 step: 9078
+<pku>	94.90	95.77	95.33	0.00
+TOT	94.90	95.77	95.33
+AVG	94.90	95.77	95.33	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 18 out of 80
+time: 30.912442684173584 loss: 1.2757104402582409 step: 9612
+<pku>	95.42	95.79	95.60	0.00
+TOT	95.42	95.79	95.60
+AVG	95.42	95.79	95.60	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 19 out of 80
+time: 30.561411142349243 loss: 1.2358705416419422 step: 10146
+<pku>	95.44	95.86	95.65	0.00
+TOT	95.44	95.86	95.65
+AVG	95.44	95.86	95.65	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 20 out of 80
+time: 29.124102115631104 loss: 1.2037478940045174 step: 10680
+<pku>	95.43	95.95	95.69	0.00
+TOT	95.43	95.95	95.69
+AVG	95.43	95.95	95.69	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 21 out of 80
+time: 29.40363883972168 loss: 1.164924542262648 step: 11214
+<pku>	95.24	96.00	95.62	0.00
+TOT	95.24	96.00	95.62
+AVG	95.24	96.00	95.62	0.00
+Epoch 22 out of 80
+time: 31.053430795669556 loss: 1.1378485102011135 step: 11748
+<pku>	95.58	95.99	95.78	0.00
+TOT	95.58	95.99	95.78
+AVG	95.58	95.99	95.78	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 23 out of 80
+time: 29.555983543395996 loss: 1.0848744768223793 step: 12282
+<pku>	95.63	96.16	95.89	0.00
+TOT	95.63	96.16	95.89
+AVG	95.63	96.16	95.89	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 24 out of 80
+time: 29.463670015335083 loss: 1.0592941264011495 step: 12816
+<pku>	95.61	96.08	95.84	0.00
+TOT	95.61	96.08	95.84
+AVG	95.61	96.08	95.84	0.00
+Epoch 25 out of 80
+time: 29.52943181991577 loss: 1.0278338745710778 step: 13350
+<pku>	95.68	96.26	95.97	0.00
+TOT	95.68	96.26	95.97
+AVG	95.68	96.26	95.97	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 26 out of 80
+time: 31.235610485076904 loss: 0.9828374375020632 step: 13884
+<pku>	95.76	96.08	95.92	0.00
+TOT	95.76	96.08	95.92
+AVG	95.76	96.08	95.92	0.00
+Epoch 27 out of 80
+time: 30.988882541656494 loss: 0.9555233529165443 step: 14418
+<pku>	95.65	96.14	95.89	0.00
+TOT	95.65	96.14	95.89
+AVG	95.65	96.14	95.89	0.00
+Epoch 28 out of 80
+time: 30.54249858856201 loss: 0.9428283147206914 step: 14952
+<pku>	95.73	96.23	95.98	0.00
+TOT	95.73	96.23	95.98
+AVG	95.73	96.23	95.98	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 29 out of 80
+time: 29.20495057106018 loss: 0.8989946392507812 step: 15486
+<pku>	96.04	96.15	96.09	0.00
+TOT	96.04	96.15	96.09
+AVG	96.04	96.15	96.09	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 30 out of 80
+time: 29.267772912979126 loss: 0.8825337874253144 step: 16020
+<pku>	95.95	96.24	96.09	0.00
+TOT	95.95	96.24	96.09
+AVG	95.95	96.24	96.09	0.00
+Epoch 31 out of 80
+time: 29.232550621032715 loss: 0.8606827839902055 step: 16554
+<pku>	95.88	96.21	96.04	0.00
+TOT	95.88	96.21	96.04
+AVG	95.88	96.21	96.04	0.00
+Epoch 32 out of 80
+time: 31.420557260513306 loss: 0.8452918013481053 step: 17088
+<pku>	95.66	96.34	96.00	0.00
+TOT	95.66	96.34	96.00
+AVG	95.66	96.34	96.00	0.00
+Epoch 33 out of 80
+time: 30.279648780822754 loss: 0.8183643113933364 step: 17622
+<pku>	95.93	96.38	96.15	0.00
+TOT	95.93	96.38	96.15
+AVG	95.93	96.38	96.15	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 34 out of 80
+time: 29.05307674407959 loss: 0.8021120757548216 step: 18156
+<pku>	95.98	96.33	96.16	0.00
+TOT	95.98	96.33	96.16
+AVG	95.98	96.33	96.16	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 35 out of 80
+time: 29.592132806777954 loss: 0.7965402650029472 step: 18690
+<pku>	95.97	96.23	96.10	0.00
+TOT	95.97	96.23	96.10
+AVG	95.97	96.23	96.10	0.00
+Epoch 36 out of 80
+time: 28.576676607131958 loss: 0.7722258153528477 step: 19224
+<pku>	95.91	96.32	96.12	0.00
+TOT	95.91	96.32	96.12
+AVG	95.91	96.32	96.12	0.00
+Epoch 37 out of 80
+time: 28.68910837173462 loss: 0.7564138789497288 step: 19758
+<pku>	96.04	96.26	96.15	0.00
+TOT	96.04	96.26	96.15
+AVG	96.04	96.26	96.15	0.00
+Epoch 38 out of 80
+time: 29.79364252090454 loss: 0.7483166024849265 step: 20292
+<pku>	96.03	96.24	96.13	0.00
+TOT	96.03	96.24	96.13
+AVG	96.03	96.24	96.13	0.00
+Epoch 39 out of 80
+time: 30.220409154891968 loss: 0.7316913527963258 step: 20826
+<pku>	96.13	96.30	96.21	0.00
+TOT	96.13	96.30	96.21
+AVG	96.13	96.30	96.21	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 40 out of 80
+time: 29.985124826431274 loss: 0.7106978122933248 step: 21360
+<pku>	95.89	96.39	96.14	0.00
+TOT	95.89	96.39	96.14
+AVG	95.89	96.39	96.14	0.00
+Epoch 41 out of 80
+time: 30.92465114593506 loss: 0.697224405976117 step: 21894
+<pku>	95.95	96.49	96.21	0.00
+TOT	95.95	96.49	96.21
+AVG	95.95	96.49	96.21	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 42 out of 80
+time: 29.48870611190796 loss: 0.6878211653219319 step: 22428
+<pku>	95.88	96.46	96.17	0.00
+TOT	95.88	96.46	96.17
+AVG	95.88	96.46	96.17	0.00
+Epoch 43 out of 80
+time: 30.865346908569336 loss: 0.6691525594735943 step: 22962
+<pku>	96.08	96.42	96.25	0.00
+TOT	96.08	96.42	96.25
+AVG	96.08	96.42	96.25	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 44 out of 80
+time: 31.898690938949585 loss: 0.6609596731123769 step: 23496
+<pku>	96.10	96.34	96.22	0.00
+TOT	96.10	96.34	96.22
+AVG	96.10	96.34	96.22	0.00
+Epoch 45 out of 80
+time: 29.107202768325806 loss: 0.6526692632048596 step: 24030
+<pku>	95.96	96.47	96.21	0.00
+TOT	95.96	96.47	96.21
+AVG	95.96	96.47	96.21	0.00
+Epoch 46 out of 80
+time: 29.31766676902771 loss: 0.6494561172428817 step: 24564
+<pku>	96.14	96.51	96.33	0.00
+TOT	96.14	96.51	96.33
+AVG	96.14	96.51	96.33	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 47 out of 80
+time: 29.354828596115112 loss: 0.6285654536137978 step: 25098
+<pku>	96.09	96.49	96.29	0.00
+TOT	96.09	96.49	96.29
+AVG	96.09	96.49	96.29	0.00
+Epoch 48 out of 80
+time: 30.812825441360474 loss: 0.6328778940772687 step: 25632
+<pku>	95.88	96.51	96.19	0.00
+TOT	95.88	96.51	96.19
+AVG	95.88	96.51	96.19	0.00
+Epoch 49 out of 80
+time: 29.522311687469482 loss: 0.6186101850164071 step: 26166
+<pku>	96.24	96.48	96.36	0.00
+TOT	96.24	96.48	96.36
+AVG	96.24	96.48	96.36	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 50 out of 80
+time: 28.941145420074463 loss: 0.5950500017924981 step: 26700
+<pku>	96.16	96.58	96.37	0.00
+TOT	96.16	96.58	96.37
+AVG	96.16	96.58	96.37	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 51 out of 80
+time: 29.885633945465088 loss: 0.5983727859082014 step: 27234
+<pku>	96.27	96.48	96.38	0.00
+TOT	96.27	96.48	96.38
+AVG	96.27	96.48	96.38	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 52 out of 80
+time: 30.626915216445923 loss: 0.5878022643092197 step: 27768
+<pku>	96.28	96.54	96.41	0.00
+TOT	96.28	96.54	96.41
+AVG	96.28	96.54	96.41	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 53 out of 80
+time: 29.13046884536743 loss: 0.5743911725221279 step: 28302
+<pku>	96.24	96.47	96.36	0.00
+TOT	96.24	96.47	96.36
+AVG	96.24	96.47	96.36	0.00
+Epoch 54 out of 80
+time: 29.602543830871582 loss: 0.5712416239696719 step: 28836
+<pku>	96.12	96.44	96.28	0.00
+TOT	96.12	96.44	96.28
+AVG	96.12	96.44	96.28	0.00
+Epoch 55 out of 80
+time: 28.764055490493774 loss: 0.5671056365814018 step: 29370
+<pku>	96.34	96.49	96.42	0.00
+TOT	96.34	96.49	96.42
+AVG	96.34	96.49	96.42	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 56 out of 80
+time: 30.60021686553955 loss: 0.5549312459308416 step: 29904
+<pku>	96.01	96.46	96.23	0.00
+TOT	96.01	96.46	96.23
+AVG	96.01	96.46	96.23	0.00
+Epoch 57 out of 80
+time: 30.83323574066162 loss: 0.5559692145691494 step: 30438
+<pku>	96.11	96.50	96.31	0.00
+TOT	96.11	96.50	96.31
+AVG	96.11	96.50	96.31	0.00
+Epoch 58 out of 80
+time: 30.784467220306396 loss: 0.5404666916795131 step: 30972
+<pku>	96.11	96.53	96.32	0.00
+TOT	96.11	96.53	96.32
+AVG	96.11	96.53	96.32	0.00
+Epoch 59 out of 80
+time: 29.19492745399475 loss: 0.5297403815498903 step: 31506
+<pku>	96.13	96.48	96.31	0.00
+TOT	96.13	96.48	96.31
+AVG	96.13	96.48	96.31	0.00
+Epoch 60 out of 80
+time: 30.897682666778564 loss: 0.5274559257304373 step: 32040
+<pku>	96.08	96.64	96.36	0.00
+TOT	96.08	96.64	96.36
+AVG	96.08	96.64	96.36	0.00
+Epoch 61 out of 80
+time: 30.307029485702515 loss: 0.520408889224704 step: 32574
+<pku>	96.10	96.57	96.34	0.00
+TOT	96.10	96.57	96.34
+AVG	96.10	96.57	96.34	0.00
+Epoch 62 out of 80
+time: 30.739582300186157 loss: 0.513237473234004 step: 33108
+<pku>	96.17	96.48	96.33	0.00
+TOT	96.17	96.48	96.33
+AVG	96.17	96.48	96.33	0.00
+Epoch 63 out of 80
+time: 32.13506317138672 loss: 0.5046812279973082 step: 33642
+<pku>	96.07	96.55	96.31	0.00
+TOT	96.07	96.55	96.31
+AVG	96.07	96.55	96.31	0.00
+Epoch 64 out of 80
+time: 30.584388494491577 loss: 0.49878863350240593 step: 34176
+<pku>	96.17	96.53	96.35	0.00
+TOT	96.17	96.53	96.35
+AVG	96.17	96.53	96.35	0.00
+Epoch 65 out of 80
+time: 30.58256435394287 loss: 0.4917148875616742 step: 34710
+<pku>	96.10	96.54	96.32	0.00
+TOT	96.10	96.54	96.32
+AVG	96.10	96.54	96.32	0.00
+Epoch 66 out of 80
+time: 30.75074863433838 loss: 0.4915764606287459 step: 35244
+<pku>	96.16	96.48	96.32	0.00
+TOT	96.16	96.48	96.32
+AVG	96.16	96.48	96.32	0.00
+Epoch 67 out of 80
+time: 32.08916091918945 loss: 0.48970540196456935 step: 35778
+<pku>	96.20	96.60	96.40	0.00
+TOT	96.20	96.60	96.40
+AVG	96.20	96.60	96.40	0.00
+Epoch 68 out of 80
+time: 29.481135606765747 loss: 0.48993045256267326 step: 36312
+<pku>	96.27	96.56	96.41	0.00
+TOT	96.27	96.56	96.41
+AVG	96.27	96.56	96.41	0.00
+Epoch 69 out of 80
+time: 30.3316650390625 loss: 0.4746067507034656 step: 36846
+<pku>	96.20	96.53	96.36	0.00
+TOT	96.20	96.53	96.36
+AVG	96.20	96.53	96.36	0.00
+Epoch 70 out of 80
+time: 31.0673565864563 loss: 0.47299911521291466 step: 37380
+<pku>	96.16	96.57	96.36	0.00
+TOT	96.16	96.57	96.36
+AVG	96.16	96.57	96.36	0.00
+Epoch 71 out of 80
+time: 29.557482481002808 loss: 0.4636799114780703 step: 37914
+<pku>	96.19	96.69	96.44	0.00
+TOT	96.19	96.69	96.44
+AVG	96.19	96.69	96.44	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 72 out of 80
+time: 31.450409650802612 loss: 0.459859982563692 step: 38448
+<pku>	96.24	96.58	96.41	0.00
+TOT	96.24	96.58	96.41
+AVG	96.24	96.58	96.41	0.00
+Epoch 73 out of 80
+time: 29.85652995109558 loss: 0.4663908583851538 step: 38982
+<pku>	96.01	96.63	96.32	0.00
+TOT	96.01	96.63	96.32
+AVG	96.01	96.63	96.32	0.00
+Epoch 74 out of 80
+time: 31.68758249282837 loss: 0.4517411936165186 step: 39516
+<pku>	96.16	96.61	96.39	0.00
+TOT	96.16	96.61	96.39
+AVG	96.16	96.61	96.39	0.00
+Epoch 75 out of 80
+time: 31.595489978790283 loss: 0.4485371046567036 step: 40050
+<pku>	96.20	96.58	96.39	0.00
+TOT	96.20	96.58	96.39
+AVG	96.20	96.58	96.39	0.00
+Epoch 76 out of 80
+time: 30.566274642944336 loss: 0.44259191384322744 step: 40584
+<pku>	96.12	96.60	96.36	0.00
+TOT	96.12	96.60	96.36
+AVG	96.12	96.60	96.36	0.00
+Epoch 77 out of 80
+time: 31.25235152244568 loss: 0.4392012153797493 step: 41118
+<pku>	96.33	96.63	96.48	0.00
+TOT	96.33	96.63	96.48
+AVG	96.33	96.63	96.48	0.00
+- new best score!
+Saving model to result/2022-06-07-14-59-55/model.bin
+Epoch 78 out of 80
+time: 29.507653951644897 loss: 0.4386919932614328 step: 41652
+<pku>	96.21	96.65	96.43	0.00
+TOT	96.21	96.65	96.43
+AVG	96.21	96.65	96.43	0.00
+Epoch 79 out of 80
+time: 30.223817348480225 loss: 0.4255425493417775 step: 42186
+<pku>	96.28	96.62	96.45	0.00
+TOT	96.28	96.62	96.45
+AVG	96.28	96.62	96.45	0.00
+Epoch 80 out of 80
+time: 31.70741605758667 loss: 0.42334179542627365 step: 42720
+<pku>	96.32	96.56	96.44	0.00
+TOT	96.32	96.56	96.44
+AVG	96.32	96.56	96.44	0.00
+
+
+Number test instances: 14081
+<pad> {'s': 0, 'b': 1, 'e': 2, 'm': 3}
+{'<pku>': 0}
+136584 15175 14081
+Trans Freeze False 256
+multi: [2]
+Traceback (most recent call last):
+  File "/data/wangdejun/NLP-CWS/MCCWS-master/main.py", line 375, in <module>
+    model.load_state_dict(torch.load(best_model_file_name,map_location="cuda:" + options.devi))
+  File "/home/wangdejun/workspace/anaconda3/envs/MCCWS/lib/python3.10/site-packages/torch/serialization.py", line 712, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/wangdejun/workspace/anaconda3/envs/MCCWS/lib/python3.10/site-packages/torch/serialization.py", line 1046, in _load
+    result = unpickler.load()
+  File "/home/wangdejun/workspace/anaconda3/envs/MCCWS/lib/python3.10/site-packages/torch/serialization.py", line 1016, in persistent_load
+    load_tensor(dtype, nbytes, key, _maybe_decode_ascii(location))
+  File "/home/wangdejun/workspace/anaconda3/envs/MCCWS/lib/python3.10/site-packages/torch/serialization.py", line 1001, in load_tensor
+    wrap_storage=restore_location(storage, location),
+  File "/home/wangdejun/workspace/anaconda3/envs/MCCWS/lib/python3.10/site-packages/torch/serialization.py", line 970, in restore_location
+    return default_restore_location(storage, map_location)
+  File "/home/wangdejun/workspace/anaconda3/envs/MCCWS/lib/python3.10/site-packages/torch/serialization.py", line 176, in default_restore_location
+    result = fn(storage, location)
+  File "/home/wangdejun/workspace/anaconda3/envs/MCCWS/lib/python3.10/site-packages/torch/serialization.py", line 158, in _cuda_deserialize
+    return obj.cuda(device)
+  File "/home/wangdejun/workspace/anaconda3/envs/MCCWS/lib/python3.10/site-packages/torch/_utils.py", line 79, in _cuda
+    return new_type(self.size()).copy_(self, non_blocking)
+  File "/home/wangdejun/workspace/anaconda3/envs/MCCWS/lib/python3.10/site-packages/torch/cuda/__init__.py", line 661, in _lazy_new
+    return super(_CudaBase, cls).__new__(cls, *args, **kwargs)
+RuntimeError: CUDA error: out of memory
+CUDA kernel errors might be asynchronously reported at some other API call,so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1.
