@@ -30,11 +30,11 @@
 
 ## 评测指标
 
-- 精准率（Precision）：又称查准率，表示预测为正的样本中真实为正的样本占比
-- 召回率（Recall）：又称查全率，表示真实为正的样本中预测为正的样本占比
+- _精准率（Precision）：又称查准率，表示预测为正的样本中真实为正的样本占比_
+- _召回率（Recall）：又称查全率，表示真实为正的样本中预测为正的样本占比_
 - F值（F-measure）：又称F分数，是精确率和召回率的调和平均值
 - 未登录词召回率（OOV Recall）：表示重复词区间未在词典中出现的词与标准分词中未在词典中出现的词的比值
-- 登录词召回率（IV Recall）：表示重复词区间在词典中出现的词与标准分词在词典中出现的词的比值
+- _登录词召回率（IV Recall）：表示重复词区间在词典中出现的词与标准分词在词典中出现的词的比值_
 - 推理速度（Inference Speed）：表示模型在测试集上做推理时平均每秒处理多少个字符（含单字和标点），单位为char/s
 
 ## 末期实验结果（CNN、BiLSTM、Transformer、Bert, 共10组实验）
@@ -56,7 +56,7 @@
 ## 参考
 - [watermelon-lee的HMM实现](https://github.com/watermelon-lee/machine-learning-algorithms-implemented-by-python/tree/master/HMM)
 - [基于N-gram的双向最大匹配中文分词](https://mqsee.blog.csdn.net/article/details/53466043)
-- [另一位同学的课程项目实现](https://github.com/JackHCC/Chinese-Tokenization)
+- 另一位同学的课程项目实现: [加入人工规则的N-gram](https://github.com/JackHCC/Chinese-Tokenization)
 - [CNN+BiLSTM在CWS任务上的实现](https://github.com/FanhuaandLuomu/BiLstm_CNN_CRF_CWS)
 - Transformer在CWS任务上的实现：[中文分词准SOTA: Unified Model (EMNLP2020)](https://aclanthology.org/2020.findings-emnlp.260/)
 - BiLSTM/Bert在CWS任务上的实现：[代码](https://github.com/hemingkx/WordSeg) [知乎](https://zhuanlan.zhihu.com/p/371842740) [预训练字向量](https://github.com/Embedding/Chinese-Word-Vectors)
